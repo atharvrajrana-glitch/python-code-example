@@ -53,17 +53,3 @@ async def create_item(item: Item):
         "message": "Item created successfully",
         "item": item
     }
-
-
-# Delete item
-@app.delete("/items/{item_id}")
-async def delete_item(item_id: int):
-    for index, item in enumerate(items_db):
-        if item.id == item_id:
-            deleted = items_db.pop(index)
-            return {
-                "message": "Item deleted",
-                "item": deleted
-            }
-
-    raise HTTPException(status_code=404, detail="Item not")
